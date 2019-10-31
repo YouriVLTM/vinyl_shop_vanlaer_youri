@@ -20,7 +20,7 @@
 <main class="container">
     @yield('main', 'Page under construction ...')
 </main>
-{{--  Footer  --}}
+@include('shared.footer')
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
