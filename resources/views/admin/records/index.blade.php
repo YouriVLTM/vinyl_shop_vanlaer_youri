@@ -1,7 +1,13 @@
-<h1>Records</h1>
+@extends('layouts.template')
 
-<ul>
-    @foreach ($records as $record)
-        <li>{!! $record !!}</li>
-    @endforeach
-</ul>
+@section('title', 'Welcome to The Vinyl Shop')
+
+@section('main')
+    <h1>Records</h1>
+
+    <ul>
+        @foreach ($records as $record)
+            <li>{!! $record !!}</li>
+        @endforeach
+    </ul>
+@endsection
