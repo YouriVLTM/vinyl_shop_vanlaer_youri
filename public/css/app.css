@@ -11104,3 +11104,12 @@ main {
   min-height: 500px;
 }
 
+.card {
+  cursor: pointer;
+}
+
+.card .btn,
+form .btn {
+  display: none;
+}
+
