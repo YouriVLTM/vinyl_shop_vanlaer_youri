@@ -20,14 +20,14 @@ class ShopController extends Controller
         $records = Record::with('genre')
             ->where(function ($query) use ($artist_title, $genre_id) {
                 $query->where('artist', 'like', $artist_title)
-                    ->where('genre_id', 'like', $genre_id)
-                    ->orderby('artist');
+                    ->where('genre_id', 'like', $genre_id);
+
             })
             ->orWhere(function ($query) use ($artist_title, $genre_id) {
                 $query->where('title', 'like', $artist_title)
-                    ->where('genre_id', 'like', $genre_id)
-                    ->orderby('title');
+                    ->where('genre_id', 'like', $genre_id);
             })
+            ->orderby('artist')
             ->paginate(12)
             ->appends(['artist'=> $request->input('artist'), 'genre_id' => $request->input('genre_id')]);
 
@@ -47,13 +47,29 @@ class ShopController extends Controller
             });
 
 
+        //get id to name
+        $genresName = Genre::where("id", $request->input('genre_id'))
+            ->get()
+            ->transform(function ($item, $key) {
+                // Set first letter of name to uppercase and add the counter
+                $item->name = ucfirst($item->name);
+                // Remove all fields that you don't use inside the view
+                unset($item->created_at, $item->updated_at, $item->records_count);
+                return $item;
+            });
+        if($genresName->isNotEmpty()){
+            $genresName = $genresName->first()->name;
+        }else{
+            $genresName = false;
+        }
+
 
         //dd($records);
 
         //dump($result);                    // open http://vinyl_shop.test/shop?json
 
-        $result = compact('genres','records');
-
+        $result = compact('genres','records','genresName');
+        //return ['$result' => $result];
         //Json::dump($result);
 
         return view('shop.index', $result);
@@ -63,5 +79,23 @@ class ShopController extends Controller
     {
         return view('shop.show', ['id' => $id]);
     }
+
+    public function shop_alt()
+    {
+        $genres = Genre::with('records')
+            ->has('records')
+            ->orderBy('name')
+            ->get()
+            ->transform(function ($item, $key) {
+                unset($item->id,$item->created_at,$item->updated_at);
+                return $item;
+            });
+
+        //return ['genres' => $genres];
+        $result = compact('genres');
+        return view('shop.shop_alt', $result);
+    }
+
+
 
 }

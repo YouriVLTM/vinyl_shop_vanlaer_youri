@@ -40,7 +40,13 @@
 
     @if ($records->count() == 0)
         <div class="alert alert-danger alert-dismissible fade show">
-            Can't find any artist or album with <b>'{{ request()->artist }}'</b> for this genre
+            Can't find any artist or album with <b>'{{ request()->artist }}'</b>
+
+                @if($genresName)
+                    for this genre '{{ $genresName }}'
+                @endif
+
+
             <button type="button" class="close" data-dismiss="alert">
                 <span>&times;</span>
             </button>
@@ -50,7 +56,7 @@
     {{ $records->links() }}
     <div class="row">
         @foreach($records as $record)
-            <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-3 d-flex">
                 <div class="card" data-id="{{ $record->id }}">
                     <img class="card-img-top" src="/assets/vinyl.png" data-src="{{ $record->cover }}" alt="{{ $record->artist }} - {{ $record->title }}">
 
