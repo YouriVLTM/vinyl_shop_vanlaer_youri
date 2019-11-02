@@ -14,15 +14,21 @@
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'The Vinyl Shop')</title>
 </head>
 <body>
 @include('shared.navigation')
-<main class="container">
+<main class="container mt-4">
     @yield('main', 'Page under construction ...')
 </main>
 @include('shared.footer')
 <script src="{{ mix('js/app.js') }}"></script>
 @yield('script_after')
+@if(env('APP_DEBUG'))
+    <script>
+        $('form').attr('novalidate', 'true');
+    </script>
+@endif
 </body>
 </html>

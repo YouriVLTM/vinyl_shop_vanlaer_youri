@@ -4,6 +4,6 @@ main {
 .card {
   cursor: pointer;
 }
-.card .btn, form .btn {
+#searchForm > div > div > button {
   display: none;
 }

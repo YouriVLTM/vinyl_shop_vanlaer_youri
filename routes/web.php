@@ -13,7 +13,9 @@
 
 
 Route::view('/', 'home');
-Route::view('contact-us', 'contact');
+
+Route::get('contact-us', 'ContactUsController@show');
+Route::post('contact-us', 'ContactUsController@sendEmail');
 
 Route::get('shop', 'ShopController@index');
 Route::get('shop/{id}', 'ShopController@show');
