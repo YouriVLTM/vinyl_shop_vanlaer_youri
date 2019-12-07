@@ -7,3 +7,6 @@ main {
 #searchForm > div > div > button {
   display: none;
 }
+.btn[disabled] {
+  cursor: not-allowed;
+}
