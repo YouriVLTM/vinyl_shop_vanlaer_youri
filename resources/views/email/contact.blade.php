@@ -1,6 +1,6 @@
 @component('mail::message')
     # Dear {{ $request->name }},
-    Thanks for you message.<br>
+    Thanks for you message. <br>
     We'll contact you as soon as possible.
 
     <hr>
@@ -9,5 +9,5 @@
     <b>Your message:</b><br>{{ $request->message }}
 
     Thanks,<br>
-    {{ config('app.name') }}
+    {{ config('APP_NAME') }}
 @endcomponent
