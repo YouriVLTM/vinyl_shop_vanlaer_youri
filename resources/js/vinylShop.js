@@ -11,6 +11,11 @@ export function to_mm_ss(duration) {
     return duration;
 }
 
+Noty.overrideDefaults({
+    layout: 'topRight',
+    theme: 'bootstrap-v4',
+    timeout: 3000
+});
 
 $(function(){
     $('input[required], select[required], textarea[required]').each(function () {
