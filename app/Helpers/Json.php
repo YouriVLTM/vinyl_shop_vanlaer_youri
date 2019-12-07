@@ -6,7 +6,7 @@
  * Time: 14:14
  */
 
-
+namespace App\Helpers;
 
 class Json
 {

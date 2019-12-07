@@ -36,5 +36,6 @@ class ContactUsController extends Controller
         // Flash a success message to the session
         session()->flash('success', 'Thank you for your message.<br>We\'ll contact you as soon as possible.');
         return redirect('contact-us');
+
     }
 }

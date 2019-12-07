@@ -12,8 +12,8 @@
 */
 
 
-Route::view('/', 'home');
 
+Route::view('/', 'home');
 Route::get('contact-us', 'ContactUsController@show');
 Route::post('contact-us', 'ContactUsController@sendEmail');
 
@@ -21,7 +21,13 @@ Route::get('shop', 'ShopController@index');
 Route::get('shop/{id}', 'ShopController@show');
 Route::get('shop_alt', 'ShopController@shop_alt');
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::redirect('/', 'records');
     Route::get('records', 'Admin\RecordController@index');
 });
+
+
+Auth::routes();
+Route::view('/', 'home');
+Route::get('logout', 'Auth\LoginController@logout');
+//Route::get('/home', 'HomeController@index')->name('home');

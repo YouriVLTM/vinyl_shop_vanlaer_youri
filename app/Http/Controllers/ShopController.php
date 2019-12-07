@@ -70,7 +70,7 @@ class ShopController extends Controller
 
         $result = compact('genres','records','genresName');
         //return ['$result' => $result];
-        //Json::dump($result);
+        Json::dump($result);
 
         return view('shop.index', $result);
     }
@@ -112,6 +112,7 @@ class ShopController extends Controller
 
         //return ['genres' => $genres];
         $result = compact('genres');
+        Json::dump($result);
         return view('shop.shop_alt', $result);
     }
 

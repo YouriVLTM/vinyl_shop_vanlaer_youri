@@ -11,6 +11,7 @@
 @endsection
 
 @section('main')
+
     <h1>Contact Us</h1>
     @include('shared.alert')
 
