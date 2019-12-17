@@ -35,6 +35,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
 
 
+    Route::get('orders/get_orderlines', 'Admin\OrdersController@get_orderlines');
+    Route::get('orders/get_orders', 'Admin\OrdersController@get_orders');
+    Route::resource('orders', 'Admin\OrdersController');
+
+
+
+
 
 });
 
@@ -45,6 +52,13 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::post('profile', 'User\ProfileController@update');
     Route::get('password', 'User\PasswordController@edit');
     Route::post('password', 'User\PasswordController@update');
+
+    Route::get('history/get_orders', 'User\OrderHistoryController@get_orders');
+    Route::resource('history', 'User\OrderHistoryController');
+
+
+
+
 });
 
 

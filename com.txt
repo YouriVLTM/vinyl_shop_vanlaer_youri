@@ -1,0 +1,5 @@
+#database oringal state
+php artisan migrate:fresh
+
+#make a controller
+php artisan make:controller Admin/UserController --model User
