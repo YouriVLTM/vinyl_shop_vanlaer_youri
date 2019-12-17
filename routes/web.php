@@ -26,6 +26,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('genres/qryGenres', 'Admin\GenreController@qryGenres');
     Route::resource('genres', 'Admin\GenreController');
     Route::resource('records', 'Admin\RecordController');
+    Route::resource('users', 'Admin\UserController');
+    Route::resource('users2', 'Admin\User2Controller', ['parameters' => ['users2' => 'user']]);
+
+    Route::get('users3/fetchdata', 'Admin\User3Controller@fetchdata');
+    Route::get('users3/get_datatable', 'Admin\User3Controller@get_datatable');
+    Route::resource('users3', 'Admin\User3Controller', ['parameters' => ['users3' => 'user']]);
+
+
+
 
 });
 
@@ -37,6 +46,7 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('password', 'User\PasswordController@edit');
     Route::post('password', 'User\PasswordController@update');
 });
+
 
 
 Auth::routes();
