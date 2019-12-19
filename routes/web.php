@@ -21,6 +21,8 @@ Route::get('shop', 'ShopController@index');
 Route::get('shop/{id}', 'ShopController@show');
 Route::get('shop_alt', 'ShopController@shop_alt');
 
+
+
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::redirect('/', 'records');
     Route::get('genres/qryGenres', 'Admin\GenreController@qryGenres');
@@ -53,6 +55,10 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('password', 'User\PasswordController@edit');
     Route::post('password', 'User\PasswordController@update');
 
+
+
+
+    Route::get('history/get_orderlines', 'User\OrderHistoryController@get_orderlines');
     Route::get('history/get_orders', 'User\OrderHistoryController@get_orders');
     Route::resource('history', 'User\OrderHistoryController');
 

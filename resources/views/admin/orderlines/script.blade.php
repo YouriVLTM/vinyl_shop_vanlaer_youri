@@ -18,7 +18,13 @@
                 {data: 'id',name:'id'},
                 {data: 'artist', name:'artist'},
                 {data: 'title', name:'title'},
-                {data: 'cover', name:'cover'},
+                {
+                    data: 'cover',
+                    name:'cover',
+                    render: function(data,type,row){
+                        return '<img src="'+data+'",width=60px, height=60px />'},
+                    orderable: false
+                },
                 {data: 'totalPrice', name:'totalPrice'},
                 {data: 'quantity', name:'quantity'},
                 {data: 'created_at', name:'created'},

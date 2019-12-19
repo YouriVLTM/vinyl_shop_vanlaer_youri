@@ -5,11 +5,10 @@
 @section('main')
     <h1>Orders history</h1>
 
-    <table id="orders-table" class="table">
+    <table id="orders-table" class="table" data-user="">
         <thead>
         <tr>
             <th>#</th>
-            <th>User name</th>
             <th>TotalPrice</th>
             <th>created_at</th>
             <th>Action</th>
@@ -17,6 +16,7 @@
         </thead>
     </table>
 
+    @include('user.orderhistory.modal')
 @endsection
 
 @section('script_after')

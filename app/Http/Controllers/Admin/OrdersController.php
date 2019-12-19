@@ -43,7 +43,7 @@ class OrdersController extends Controller
 
         $id = $request->input("id");
         return Datatables::of(
-            Orderline::where('id', $id)
+            Orderline::where('order_id', $id)
             ->get()
 
 

@@ -3,3 +3,6 @@ php artisan migrate:fresh
 
 #make a controller
 php artisan make:controller Admin/UserController --model User
+
+#404 page
+abort(404);

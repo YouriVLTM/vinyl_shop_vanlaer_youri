@@ -23,6 +23,7 @@
         @endif
     @endauth
 
+
     <div class="row">
         <div class="col-sm-4 text-center">
             <img class="img-thumbnail" id="cover" src="/assets/vinyl.png" data-src="{{ $record->cover }}"
