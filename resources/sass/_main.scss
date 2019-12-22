@@ -11,5 +11,20 @@ main {
   cursor: not-allowed;
 }
 .imgcoverorderlines{
-  height: 10em;
+  height: 6em;
+}
+.imgdropdownbasket{
+  height: 50px;
+}
+
+//basket
+.basket-dropdown{
+  max-height: 200px;
+  min-width: 280px;
+  overflow: scroll;
+}
+.cart-counter {
+  position: relative;
+  top: -12px;
+  left: -3px;
 }

@@ -29,8 +29,8 @@
             <img class="img-thumbnail" id="cover" src="/assets/vinyl.png" data-src="{{ $record->cover }}"
                  alt="{{ $record->title }}">
             <p>
-                <a href="#!" class="btn {{ $record->btnClass }} btn-sm btn-block mt-3
-                 {{ $record->stock == 0 ? 'disabled' : '' }}">
+                <a href="#!" class="btn {{ $record->btnClass }} btn-sm btn-block mt-3 btn-addCart
+                 {{ $record->stock == 0 ? 'disabled' : '' }}" data-id="{{ $record->id }}">
                     <i class="fas fa-cart-plus mr-3"></i>Add to cart
                 </a>
             </p>
@@ -130,6 +130,55 @@
             @endauth
 
 
+            $(document).on('click', '.btn-addCart', function(){
+                let id = $(this).data("id");
+                console.log(id);
+
+                // get orderlines data
+                $.ajax({
+                    url: "{{ url('basket/addToCard') }}",
+                    method:'get',
+                    data:{ _token: "{{csrf_token()}}","recordsid":id },
+                    dataType:'json',
+                    success:function(data){
+                        console.log(data);
+
+                        //notifcation
+                        new Noty({
+                            type: data.type,
+                            text: data.text
+                        }).show();
+
+
+                        reloadBasket();
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("Status: " + textStatus);
+                    }
+                })
+            });
+
+
+
+
+
         });
+
+        function reloadBasket(){
+            $.ajax({
+                url: "{{ url('basket/dropdown') }}",
+                method:'get',
+                data:{ _token: "{{csrf_token()}}" },
+                dataType:'html',
+                success:function(data){
+                    $('.basket-dropdown-list').html(data);
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("Status: " + textStatus);
+                }
+            })
+        }
+
     </script>
 @endsection

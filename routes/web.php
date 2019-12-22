@@ -22,6 +22,11 @@ Route::get('shop/{id}', 'ShopController@show');
 Route::get('shop_alt', 'ShopController@shop_alt');
 
 
+Route::get('basket/dropdown', 'BasketController@dropdown');
+Route::get('basket/addToCard', 'BasketController@addToCard');
+Route::resource('basket', 'BasketController');
+
+
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::redirect('/', 'records');
@@ -40,6 +45,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('orders/get_orderlines', 'Admin\OrdersController@get_orderlines');
     Route::get('orders/get_orders', 'Admin\OrdersController@get_orders');
     Route::resource('orders', 'Admin\OrdersController');
+
+
+
+    Route::get('dashboard/getUsersFunctionCount', 'Admin\DashboardController@getUsersFunctionCount');
+    Route::get('dashboard/getOrders', 'Admin\DashboardController@getOrders');
+    Route::resource('dashboard', 'Admin\DashboardController');
 
 
 

@@ -27,7 +27,46 @@
                     </li>
                 @endguest
                 <li class="nav-item">
-                    <a class="nav-link" href="/basket"><i class="fas fa-shopping-basket"></i>Basket</a>
+                    <!--<a class="nav-link" href="/basket"><i class="fas fa-shopping-basket"></i>Basket</a>-->
+                    <div class="dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown" id="dropdownMenuCart" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                            <i class="fas fa-cart-arrow-down"></i>
+
+                            @if(session('cart'))
+
+                            <span class="badge badge-success cart-counter">{{ count(session('cart')) }}</span>
+                            @endif
+
+                            <span class="caret"> </span>
+                        </a>
+                        <div class="dropdown-menu basket-dropdown basket-dropdown shadow p-3 mb-5 bg-white rounded" aria-labelledby="dropdownMenuCart" >
+
+                            <div class="container">
+                                <div class="row">
+                                    <!--<div class="col-12 col-sm-12 text-left">
+                                        <a href="/basket" class="btn btn-info">
+                                            <i class="fas fa-plus-circle mr-1"></i>Meer info
+                                        </a>
+                                    </div>-->
+
+                                    <div class="col-12 col-sm-12 basket-dropdown-list mb-2">
+                                        @include("basket.dropdown")
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
                 </li>
                 @auth
                     <li class="nav-item dropdown">
@@ -42,6 +81,7 @@
                             <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
                             @if(auth()->user()->admin)
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                                 <a class="dropdown-item" href="/admin/genres"><i class="fas fa-microphone-alt"></i>Genres</a>
                                 <a class="dropdown-item" href="/admin/records"><i class="fas fa-compact-disc"></i>Records</a>
                                 <a class="dropdown-item" href="/admin/users"><i class="fas fa-users-cog"></i>Users</a>

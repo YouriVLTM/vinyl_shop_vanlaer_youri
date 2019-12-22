@@ -52656,6 +52656,15 @@ $(function () {
   $('body').tooltip({
     selector: '[data-toggle="tooltip"]',
     html: true
+  }); //basket
+
+  $("#dropdownMenuCart").click(function () {
+    $('.basketcovers').each(function () {
+      // Replace vinyl.png with real cover
+      if ($(this).data('src') != '') {
+        $(this).attr('src', $(this).data('src'));
+      }
+    });
   });
 });
 

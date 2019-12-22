@@ -1,3 +1,6 @@
+#view list
+php artisan route:list
+
 #database oringal state
 php artisan migrate:fresh
 
