@@ -52667,6 +52667,27 @@ $(function () {
     });
   });
 });
+var intervalId = new Map(); // wanneer windows is geladen
+
+$(window).on('load', function () {
+  // animation count
+  //up
+  $(".animation-count-up").each(function (index) {
+    var thisObj = $(this); // change to min
+
+    thisObj.text(thisObj.data('min')); //set to mapping structure and call animationcounter
+
+    intervalId.set(thisObj, window.setInterval(animationCounter, thisObj.data("speed"), thisObj));
+  });
+}); //animation count up
+
+function animationCounter(thisObj) {
+  if (thisObj.data('max') != thisObj.text()) {
+    thisObj.text(parseInt(thisObj.text()) + 1);
+  } else {
+    clearInterval(intervalId.get(thisObj));
+  }
+}
 
 /***/ }),
 

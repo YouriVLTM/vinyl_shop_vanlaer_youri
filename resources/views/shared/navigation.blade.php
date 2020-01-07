@@ -33,10 +33,18 @@
                         <a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown" id="dropdownMenuCart" aria-haspopup="true" aria-expanded="false" data-reference="parent">
                             <i class="fas fa-cart-arrow-down"></i>
 
-                            @if(session('cart'))
 
-                            <span class="badge badge-success cart-counter">{{ count(session('cart')) }}</span>
-                            @endif
+
+                            <span class="badge badge-success cart-counter">
+                                 @if(session('cart'))
+
+                                     {{ count(session('cart')) }}
+                                @else
+                                    0
+                                @endif
+
+                            </span>
+
 
                             <span class="caret"> </span>
                         </a>
@@ -44,12 +52,6 @@
 
                             <div class="container">
                                 <div class="row">
-                                    <!--<div class="col-12 col-sm-12 text-left">
-                                        <a href="/basket" class="btn btn-info">
-                                            <i class="fas fa-plus-circle mr-1"></i>Meer info
-                                        </a>
-                                    </div>-->
-
                                     <div class="col-12 col-sm-12 basket-dropdown-list mb-2">
                                         @include("basket.dropdown")
                                     </div>
